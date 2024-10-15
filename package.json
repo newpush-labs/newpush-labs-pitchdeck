@@ -1,0 +1,21 @@
+{
+  "name": "lab-pitchdeck",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.50.0-beta.3",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "slidev-theme-academic": "^2.0.1",
+    "slidev-theme-dracula": "^0.2.0",
+    "slidev-theme-penguin": "^2.3.0",
+    "unplugin-icons": "^0.19.3",
+    "vite-svg-loader": "^5.1.0",
+    "vue": "^3.5.10"
+  }
+}
