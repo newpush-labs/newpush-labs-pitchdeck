@@ -54,7 +54,11 @@ layout: statement
 ---
 # Tired of Spending Hours Configuring Your IT  Lab?
 
-## We’ve been there too.  
+<v-click>
+
+## We've been there too.  
+
+</v-click>
 
 Managing containers, setting up secure networks, and getting everything to work together can be frustrating.
 
@@ -62,9 +66,23 @@ Managing containers, setting up secure networks, and getting everything to work 
 
 # Setting up an IT lab is overwhelming.
 
+<v-click>
+
 - **Time-Consuming**: Manually configuring every component  
+
+</v-click>
+
+<v-click>
+
 - **Complexity**: Keeping services secure and reliable  
+
+</v-click>
+
+<v-click>
+
 - **Lack of Guidance**: Hard to know where to start or what to do next  
+
+</v-click>
 
 ---
 layout: fact
@@ -75,9 +93,25 @@ layout: fact
 ---
  
 # What if you could have an IT lab that's:  
+
+<v-click>
+
 - **Ready Out of the Box**: Secure and reliable from day one  
+
+</v-click>
+
+<v-click>
+
 - **Easy to Expand**: Add new services effortlessly  
+
+</v-click>
+
+<v-click>
+
 - **Built for Learning**: Transparency to help you grow your skills  
+
+</v-click>
+
 
 <div v-click class="text-xl text-center">
 
@@ -102,38 +136,64 @@ With **newpush labs**, now you can!
 # Meet the newpush labs
 
 We’ve taken **decades of home lab experience** and created a solution that:  
+
+<v-clicks>
+
 - **Saves time**  
 - **Reduces complexity**  
 - **Empowers you to learn**  
 
-Whether you're a student, a professional, or simply curious, **newpush labs** will work well for you.
+</v-clicks>
+
+<v-click>
+
+Whether you're a student, a professional, or simply curious **newpush labs** will work well for you.
+  
+
+ </v-click>
 
 ---
 
 # With newpush labs you get:
 
+<v-clicks>
+
 - **Predefined Lab Stacks**: Experiment with specific environments  
 - **Dynamic Web UI**: Everything you need at your fingertips  
 - **Integrated Monitoring**: Real-time metrics and alerts  
-- **Infrastructure as Code**: Easily recreate and scale your setups  
+- **Infrastructure as Code**: Easily recreate and scale your setups
+
+</v-clicks>
 
 ---
 
 # Predefined Lab Stacks
 
+<v-click>
+
 ### **What are Lab Stacks?**  
 - Pre-configured environments tailored for specific purposes  
 - Examples include: Workflow Lab, AI Lab, Web Development Lab  
+
+</v-click>
+
+<v-click>
 
 ### **What You Can Do**:  
 - Test and evaluate new technologies  
 - Create complex automations  
 - Run CI/CD pipelines, productivity tools, and more
 
+</v-click>
+
+<v-click>
+
 <div class="text-center">
 
   **Lab Stacks help you get started faster and go further.**
 </div>
+
+</v-click>
 
 ---
 
@@ -150,117 +210,10 @@ Whether you're a student, a professional, or simply curious, **newpush labs** wi
   Join us and make it happen!
 </div>
 
-
----
-level: 2
----
-
-# Extendable pre-defined environments
-
-Under the hood
-
-````md magic-move {lines: true}
-
-```yaml {*|2|*}
-// A regular docker container
-services:
-  jupyter:
-    image: quay.io/jupyter/base-notebook:latest
- 
-```
-
-```yaml {*|5-6|*}
-// Just add labels to make it access via the web
-services:
-  jupyter:
-    image: quay.io/jupyter/base-notebook:latest
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.jupyter.rule=Host(`jupyter.${DOMAIN}`)"
-      - "traefik.http.routers.jupyter.entrypoints=https"
-      - "traefik.http.routers.jupyter.service=jupyter"
-      - "traefik.http.routers.jupyter.tls=true"
-      - "traefik.http.routers.jupyter.tls.certresolver=default"
-```
- 
-```yaml
-// Secure it with forward proxy
-services:
-  jupyter:
-    image: quay.io/jupyter/base-notebook:latest
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.jupyter.rule=Host(`jupyter.${DOMAIN}`)"
-      - "traefik.http.routers.jupyter.entrypoints=https"
-      - "traefik.http.routers.jupyter.service=jupyter"
-      - "traefik.http.routers.jupyter.tls=true"
-      - "traefik.http.routers.jupyter.tls.certresolver=default"
-      - "traefik.http.routers.jupyter.middlewares=traefik-forward-auth"
-```
- 
-
-```yaml
-// Make sure it's shown on the dashboard
-services:
-  jupyter:
-    image: quay.io/jupyter/base-notebook:latest
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.jupyter.rule=Host(`jupyter.${DOMAIN}`)"
-      - "traefik.http.routers.jupyter.entrypoints=https"
-      - "traefik.http.routers.jupyter.service=jupyter"
-      - "traefik.http.routers.jupyter.tls=true"
-      - "traefik.http.routers.jupyter.tls.certresolver=default"
-      - "traefik.http.routers.jupyter.middlewares=traefik-forward-auth"
-      - "mafl.enable=true"
-      - "mafl.title=JupyterLab"
-      - "mafl.description=The latest web-based interactive development environment for notebooks, code, and data."
-      - "mafl.tag=development"
-      - "mafl.group=Development"
-      - "mafl.link=https://jupyter.${DOMAIN}"
-      - "mafl.icon.name=simple-icons:jupyter"
-```
- 
-
-
-```yaml {*|6|*}
-// And let watchtower to auto update the container 
-services:
-  jupyter:
-    image: quay.io/jupyter/base-notebook:latest
-    labels:
-      - "com.centurylinklabs.watchtower.enable"
-      - "traefik.enable=true"
-      - "traefik.http.routers.jupyter.rule=Host(`jupyter.${DOMAIN}`)"
-      - "traefik.http.routers.jupyter.entrypoints=https"
-      - "traefik.http.routers.jupyter.service=jupyter"
-      - "traefik.http.routers.jupyter.tls=true"
-      - "traefik.http.routers.jupyter.tls.certresolver=default"
-      - "traefik.http.routers.jupyter.middlewares=traefik-forward-auth"
-      - "mafl.enable=true"
-      - "mafl.title=JupyterLab"
-      - "mafl.description=The latest web-based interactive development environment for notebooks, code, and data."
-      - "mafl.tag=development"
-      - "mafl.group=Development"
-      - "mafl.link=https://jupyter.${DOMAIN}"
-      - "mafl.icon.name=simple-icons:jupyter"
-```
- 
-````
-
-
 ---
 class: px-20
 ---
-
 
 # Learn More
 
 [Documentation](https://labs.newpush.com) · [GitHub](https://github.com/newpush/newpush-labs)
-
----
-class: px-20
----
-# Conclusion
-Many tech students lack hands-on experience, limiting their ability to build real-world skills. Our open-source solution enables them to create personal labs, offering the tools to practice, experiment, and master key concepts — transforming them into confident, skilled professionals ready to excel in the evolving tech industry. 
-We understand that providing IT lab environments for students can be challenging, but by offering this solution, your university can stand out from the crowd as a leader in innovative, hands-on learning experiences.
